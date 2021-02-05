@@ -5,7 +5,11 @@ import Logo from '../assets/mastermind.svg';
 const Homepage = () => {
     return (
         <React.Fragment>
-            <Row justify='center' align='middle' className='logo-container'>
+            <Row
+                justify='center'
+                align='middle'
+                className='homepage logo-container'
+            >
                 <Col xs={12} sm={12}>
                     <img alt='logo' className='logo' src={Logo}></img>
                 </Col>
@@ -15,9 +19,7 @@ const Homepage = () => {
                     <Button type='primary' block>
                         Play
                     </Button>
-                    <Button type='primary' block>
-                        Instructions
-                    </Button>
+                    <Button block>Instructions</Button>
                 </Col>
             </Row>
         </React.Fragment>
