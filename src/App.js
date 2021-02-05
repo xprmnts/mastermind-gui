@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import Board from './components/Board';
+import { generateSecretCode } from './helpers/generateSecretCode.js';
 
 import './App.less';
+// Default Config
+//const _defaultAttempts = 10;
+const _defaultChoices = 6;
+const _defaultPegs = 4;
 
-// const dataSource = [
-//     {
-//         key: '1',
-//         attempt: 1,
-//         slotOne: 1,
-//         slotTwo: 2,
-//         slotThree: 3,
-//         slotFour: 4,
-//         result: '1,1'
-//     }
-// ];
+const secret = generateSecretCode(_defaultPegs, _defaultChoices);
 
 const App = () => {
     return (
         <Row justify='center'>
             <Col xs={24} sm={24} className='top-panel'>
-                <Board />
+                <Board secret={secret} />
             </Col>
         </Row>
     );
