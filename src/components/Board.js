@@ -3,6 +3,8 @@ import { Row, Col, Button, Table, Select, Form } from 'antd';
 import { validateGuess } from '../helpers/validateGuess.js';
 import { generateSecretCode } from '../helpers/generateSecretCode.js';
 import Logo from '../assets/mastermind.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 class Board extends React.Component {
     constructor(props) {
@@ -15,22 +17,22 @@ class Board extends React.Component {
                 key: 'attempt'
             },
             {
-                title: '-',
+                title: <FontAwesomeIcon icon={faLock} />,
                 dataIndex: 'slotOne',
                 key: 'slotOne'
             },
             {
-                title: '-',
+                title: <FontAwesomeIcon icon={faLock} />,
                 dataIndex: 'slotTwo',
                 key: 'slotTwo'
             },
             {
-                title: '-',
+                title: <FontAwesomeIcon icon={faLock} />,
                 dataIndex: 'slotThree',
                 key: 'slotThree'
             },
             {
-                title: '-',
+                title: <FontAwesomeIcon icon={faLock} />,
                 dataIndex: 'slotFour',
                 key: 'slotFour'
             },
