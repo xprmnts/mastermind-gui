@@ -42,10 +42,6 @@
     width: 100%;
 }
 
-.table {
-    max-width: 414px;
-}
-
 .game-container {
     max-width: 600px;
     margin: auto;
@@ -53,7 +49,9 @@
 
 .table-container {
     max-width: 414px;
+    height: 50vh;
     margin: auto;
+    background-color: #141414;
 }
 
 .action-container {
@@ -62,11 +60,7 @@
 }
 
 .slot-input {
-    width: 25%;
-}
-
-.ant-select-selection-item {
-    // color: #000;
+    width: 20%;
 }
 
 .ant-input-number-handler-wrap {
@@ -77,24 +71,37 @@
     width: 100%;
 }
 
-#components-grid-demo-flex-align [class~='ant-row'] {
-    background: rgba(255, 255, 255, 0.08);
+/*
+* Centre text in table
+*/
+.ant-table-thead > tr > th {
+    text-align: center;
 }
 
-table {
-    height: 60vh;
+.ant-table-row {
+    text-align: center;
 }
 
-@media only screen and (max-width: 414px) and (orientation: portrait) {
-    .logo-container {
-        height: 0px;
-        visibility: hidden;
+/*
+* Remove Ant Styling on table 
+*/
+.ant-table-tbody > tr > td {
+    border-bottom: none;
+}
+
+.ant-empty-image {
+    visibility: hidden;
+}
+
+.ant-empty-description {
+    visibility: hidden;
+}
+
+/*
+* Show the game table in the middle(ish) of the screen on larger devices 
+*/
+@media only screen and (min-width: 414px) {
+    .game-container {
+        margin-top: 10vh;
     }
 }
-
-// @media only screen and (orientation: landscape) {
-//     .logo-container {
-//         height: 0px;
-//         visibility: hidden;
-//     }
-// }
