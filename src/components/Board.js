@@ -1,16 +1,7 @@
 import React from 'react';
-import { Row, Col, Button, Table, Select, Form } from 'antd';
+import { Row, Col, Table } from 'antd';
 import CodeSelector from './CodeSelector';
 import options from '../assets/codeOptions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faStar,
-    faBell,
-    faCoffee,
-    faCircle,
-    faHeart,
-    faIceCream
-} from '@fortawesome/free-solid-svg-icons';
 import { generateSecretCode } from '../helpers/generateSecretCode.js';
 import { validateGuess } from '../helpers/validateGuess.js';
 
