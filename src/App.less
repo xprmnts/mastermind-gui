@@ -15,6 +15,11 @@
     height: 20vh;
 }
 
+.instructions-text {
+    max-width: 600px;
+    margin: auto;
+}
+
 .logo-container {
     max-width: 414px;
     margin: auto;
@@ -37,22 +42,31 @@
     width: 100%;
 }
 
-.top-panel {
-    background-color: #dcae17;
+.table {
+    max-width: 414px;
+}
+
+.game-container {
     max-width: 600px;
+    margin: auto;
+}
+
+.table-container {
+    max-width: 414px;
+    margin: auto;
+}
+
+.action-container {
+    max-width: 414px;
+    margin: auto;
 }
 
 .slot-input {
-    background-color: #ffffff;
-    color: #000;
     width: 25%;
-    height: 60px;
-    padding: 5px;
-    vertical-align: middle;
 }
 
 .ant-select-selection-item {
-    color: #000;
+    // color: #000;
 }
 
 .ant-input-number-handler-wrap {
@@ -66,3 +80,21 @@
 #components-grid-demo-flex-align [class~='ant-row'] {
     background: rgba(255, 255, 255, 0.08);
 }
+
+table {
+    height: 60vh;
+}
+
+@media only screen and (max-width: 414px) and (orientation: portrait) {
+    .logo-container {
+        height: 0px;
+        visibility: hidden;
+    }
+}
+
+// @media only screen and (orientation: landscape) {
+//     .logo-container {
+//         height: 0px;
+//         visibility: hidden;
+//     }
+// }

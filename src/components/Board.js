@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col, Button, Table, Select, Form } from 'antd';
 import { validateGuess } from '../helpers/validateGuess.js';
+import { generateSecretCode } from '../helpers/generateSecretCode.js';
+import Logo from '../assets/mastermind.svg';
 
 class Board extends React.Component {
     constructor(props) {
@@ -44,6 +46,8 @@ class Board extends React.Component {
             }
         ];
 
+        this.secret = generateSecretCode(this.props.choices, this.props.pegs);
+
         this.state = {
             history: [],
             count: 0
@@ -60,7 +64,7 @@ class Board extends React.Component {
 
         const { success, exactMatchCount, partialMatchCount } = validateGuess(
             guess,
-            this.props.secret
+            this.secret
         );
 
         const { count, history } = this.state;
@@ -88,89 +92,147 @@ class Board extends React.Component {
         const columns = this.columns;
 
         return (
-            <div>
-                <Table
-                    pagination={false}
-                    dataSource={history}
-                    columns={columns}
-                />
-                <React.Fragment>
-                    <Form
-                        onFieldsChange={this.onFieldsChange}
-                        onFinish={this.onFinish}
-                        onFinishFailed={this.onFinishFailed}
+            <React.Fragment>
+                <Row
+                    justify='center'
+                    align='middle'
+                    className='instructions logo-container'
+                >
+                    <Col xs={12} sm={12}>
+                        <img alt='logo' className='logo' src={Logo}></img>
+                    </Col>
+                </Row>
+                <Row gutter={[0, 16]} className='game-container'>
+                    <Col
+                        xs={24}
+                        sm={24}
+                        m={24}
+                        l={24}
+                        xl={24}
+                        className='table-container'
                     >
-                        <Row justify='space-between' align='middle'>
-                            <Col className='slot-input'>
-                                <Form.Item
-                                    name='slotOne'
-                                    rules={[
-                                        { required: true, message: 'Required!' }
-                                    ]}
-                                >
-                                    <Select>
-                                        <Option value='1'>1</Option>
-                                        <Option value='2'>2</Option>
-                                        <Option value='3'>3</Option>
-                                        <Option value='4'>4</Option>
-                                        <Option value='5'>5</Option>
-                                        <Option value='6'>6</Option>
-                                    </Select>
-                                </Form.Item>
-                            </Col>
-                            <Col className='slot-input'>
-                                <Form.Item name='slotTwo'>
-                                    <Select>
-                                        <Option value='1'>1</Option>
-                                        <Option value='2'>2</Option>
-                                        <Option value='3'>3</Option>
-                                        <Option value='4'>4</Option>
-                                        <Option value='5'>5</Option>
-                                        <Option value='6'>6</Option>
-                                    </Select>
-                                </Form.Item>
-                            </Col>
-                            <Col className='slot-input'>
-                                <Form.Item name='slotThree'>
-                                    <Select>
-                                        <Option value='1'>1</Option>
-                                        <Option value='2'>2</Option>
-                                        <Option value='3'>3</Option>
-                                        <Option value='4'>4</Option>
-                                        <Option value='5'>5</Option>
-                                        <Option value='6'>6</Option>
-                                    </Select>
-                                </Form.Item>
-                            </Col>
-                            <Col className='slot-input'>
-                                <Form.Item name='slotFour'>
-                                    <Select>
-                                        <Option value='1'>1</Option>
-                                        <Option value='2'>2</Option>
-                                        <Option value='3'>3</Option>
-                                        <Option value='4'>4</Option>
-                                        <Option value='5'>5</Option>
-                                        <Option value='6'>6</Option>
-                                    </Select>
-                                </Form.Item>
-                            </Col>
-                        </Row>
-                        <Row justify='center'>
-                            <Col span={16}>
-                                <Form.Item>
-                                    <Button
-                                        size='large'
-                                        type='primary'
-                                        htmlType='submit'
-                                    >
-                                        Submit Code
-                                    </Button>
-                                </Form.Item>
-                            </Col>
-                        </Row>
-                    </Form>
-                </React.Fragment>
-            </div>
+                        <Table
+                            pagination={false}
+                            dataSource={history}
+                            columns={columns}
+                            className='table'
+                        />
+                    </Col>
+
+                    <Col
+                        xs={24}
+                        sm={24}
+                        m={24}
+                        l={24}
+                        xl={24}
+                        className='action-container'
+                    >
+                        <React.Fragment>
+                            <Form
+                                onFieldsChange={this.onFieldsChange}
+                                onFinish={this.onFinish}
+                                onFinishFailed={this.onFinishFailed}
+                            >
+                                <Row justify='space-between' align='middle'>
+                                    <Col className='slot-input'>
+                                        <Form.Item
+                                            name='slotOne'
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Required!'
+                                                }
+                                            ]}
+                                        >
+                                            <Select>
+                                                <Option value='1'>1</Option>
+                                                <Option value='2'>2</Option>
+                                                <Option value='3'>3</Option>
+                                                <Option value='4'>4</Option>
+                                                <Option value='5'>5</Option>
+                                                <Option value='6'>6</Option>
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>
+                                    <Col className='slot-input'>
+                                        <Form.Item
+                                            name='slotTwo'
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Required!'
+                                                }
+                                            ]}
+                                        >
+                                            <Select>
+                                                <Option value='1'>1</Option>
+                                                <Option value='2'>2</Option>
+                                                <Option value='3'>3</Option>
+                                                <Option value='4'>4</Option>
+                                                <Option value='5'>5</Option>
+                                                <Option value='6'>6</Option>
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>
+                                    <Col className='slot-input'>
+                                        <Form.Item
+                                            name='slotThree'
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Required!'
+                                                }
+                                            ]}
+                                        >
+                                            <Select>
+                                                <Option value='1'>1</Option>
+                                                <Option value='2'>2</Option>
+                                                <Option value='3'>3</Option>
+                                                <Option value='4'>4</Option>
+                                                <Option value='5'>5</Option>
+                                                <Option value='6'>6</Option>
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>
+                                    <Col className='slot-input'>
+                                        <Form.Item
+                                            name='slotFour'
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'Required!'
+                                                }
+                                            ]}
+                                        >
+                                            <Select>
+                                                <Option value='1'>1</Option>
+                                                <Option value='2'>2</Option>
+                                                <Option value='3'>3</Option>
+                                                <Option value='4'>4</Option>
+                                                <Option value='5'>5</Option>
+                                                <Option value='6'>6</Option>
+                                            </Select>
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                                <Row justify='center'>
+                                    <Col span={24}>
+                                        <Form.Item>
+                                            <Button
+                                                size='large'
+                                                htmlType='submit'
+                                                block
+                                            >
+                                                Submit Code
+                                            </Button>
+                                        </Form.Item>
+                                    </Col>
+                                </Row>
+                            </Form>
+                        </React.Fragment>
+                    </Col>
+                </Row>
+            </React.Fragment>
         );
     }
 }

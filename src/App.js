@@ -1,29 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Row, Col } from 'antd';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import Board from './components/Board';
 import Homepage from './components/Homepage';
 import Instructions from './components/Instructions';
-import { generateSecretCode } from './helpers/generateSecretCode.js';
 
 import './App.less';
 // Default Config
-//const _defaultAttempts = 10;
+const _defaultAttempts = 10;
 const _defaultChoices = 6;
 const _defaultPegs = 4;
 
-const secret = generateSecretCode(_defaultPegs, _defaultChoices);
-
 const App = () => {
-    return <Instructions />;
+    return (
+        <Router>
+            <Switch>
+                <Route path='/instructions'>
+                    <Instructions />
+                </Route>
+                <Route path='/game'>
+                    <Board
+                        choices={_defaultChoices}
+                        pegs={_defaultPegs}
+                        attempts={_defaultAttempts}
+                    />
+                </Route>
+                <Route path='/'>
+                    <Homepage />
+                </Route>
+            </Switch>
+        </Router>
+    );
 };
 
 // const App = () => {
 //     return (
-//         <Row justify='center'>
-//             <Col xs={24} sm={24} className='top-panel'>
-//                 <Board secret={secret} />
-//             </Col>
-//         </Row>
+//         <Board
+//             choices={_defaultChoices}
+//             pegs={_defaultPegs}
+//             attempts={_defaultAttempts}
+//         />
 //     );
 // };
 

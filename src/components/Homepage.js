@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Button } from 'antd';
 import Logo from '../assets/mastermind.svg';
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
     return (
@@ -15,11 +16,16 @@ const Homepage = () => {
                 </Col>
             </Row>
             <Row justify='center' align='middle' className='button-container'>
-                <Col xs={12} sm={12} className='button-container'>
-                    <Button type='primary' block>
-                        Play
-                    </Button>
-                    <Button block>Instructions</Button>
+                <Col xs={12} sm={12}>
+                    <Link to='/game'>
+                        <Button type='primary' block>
+                            Play
+                        </Button>
+                    </Link>
+
+                    <Link to='/instructions'>
+                        <Button block>Instructions</Button>
+                    </Link>
                 </Col>
             </Row>
         </React.Fragment>

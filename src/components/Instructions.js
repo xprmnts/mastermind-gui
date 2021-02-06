@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Button } from 'antd';
 import Logo from '../assets/mastermind.svg';
+import { Link } from 'react-router-dom';
 
 const Instructions = () => {
     return (
@@ -14,7 +15,7 @@ const Instructions = () => {
                     <img alt='logo' className='logo' src={Logo}></img>
                 </Col>
             </Row>
-            <Row justify='center' align='middle'>
+            <Row justify='center' align='middle' className='instructions-text'>
                 <Col xs={16} sm={16}>
                     <h2>Introduction</h2>
                     <p>
@@ -41,11 +42,15 @@ const Instructions = () => {
                     </p>
                 </Col>
             </Row>
-            <Row justify='center'>
+            <Row justify='center' className='instructions-text'>
                 <Col xs={16} sm={16}>
                     <Row justify='space-between'>
-                        <Button type='link'>Back</Button>
-                        <Button type='link'>Play</Button>
+                        <Link to='/'>
+                            <Button type='link'>Back</Button>
+                        </Link>
+                        <Link to='/game'>
+                            <Button type='link'>Play</Button>
+                        </Link>
                     </Row>
                 </Col>
             </Row>
