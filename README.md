@@ -4,7 +4,7 @@ The classic [mastermind](https://en.wikipedia.org/wiki/Mastermind_%28board_game%
 
 [Play Here](https://mastermind.abhinayreddy.com)
 
-![alt text](homepage.png)
+![alt text](mastermind.gif)
 
 # Game Instructions
 
